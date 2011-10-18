@@ -4,7 +4,7 @@ class nagios3::export::target {
 		ensure 	=> present,
 		alias	=> $hostname,
 		address => $ipaddress,
-		use		=> "generic-host"
+		use		=> "generic-host",
 		target => "/etc/nagios3/nagios_host.cfg"
 	}
 	
