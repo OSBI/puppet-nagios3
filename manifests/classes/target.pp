@@ -12,7 +12,7 @@ class nagios3::export::target {
 		use					=> "generic-service",
 		host_name			=> "$fqdn",
 		notification_period	=> "24x7",
-		service_description	=> "${hostname}_check_ping"
+		service_description	=> "${hostname}_check_ping",
 		target => "/etc/nagios/nagios_services.d/ping-$fqdn.cfg"
 	}
 		
