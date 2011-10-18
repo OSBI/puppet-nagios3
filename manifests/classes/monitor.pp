@@ -1,4 +1,4 @@
-class nagios::monitor {
+class nagios3::monitor {
 
 	package { ["nagios3", "nagios-plugins"]: ensure => installed }
 

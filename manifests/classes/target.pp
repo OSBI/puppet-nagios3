@@ -1,4 +1,4 @@
-class nagios::export::target {
+class nagios3::export::target {
 
 	@@nagios_host { "$fqdn":
 		ensure 	=> present,
