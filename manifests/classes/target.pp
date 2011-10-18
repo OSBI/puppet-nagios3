@@ -5,6 +5,7 @@ class nagios3::export::target {
 		alias	=> $hostname,
 		address => $ipaddress,
 		use		=> "generic-host"
+		target => "/etc/nagios3/nagios_host.cfg"
 	}
 	
 	@@nagios_service { "check_ping_${hostname}":
@@ -13,7 +14,7 @@ class nagios3::export::target {
 		host_name			=> "$fqdn",
 		notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
-		target => "/etc/nagios/nagios_services.d/ping-$fqdn.cfg"
+		target => "/etc/nagios3/nagios_service.cfg"
 	}
 		
 		
