@@ -10,6 +10,6 @@ class nagios3::monitor {
 	}
 
 
-	Nagios_host <<||>> { notify => Serivce["nagios3"]}
+	Nagios_host <<||>> { notify => Service["nagios3"]}
 	Nagios_service <<||>> { notify => Service["nagios3"]}
 }
