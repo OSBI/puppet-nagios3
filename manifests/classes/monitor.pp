@@ -15,7 +15,7 @@ class nagios3::monitor {
 	Nagios_hostextinfo <<||>> { notify => Exec["chown fast"]}
 	
 	exec { "chown fast":
-    	command => "chmod -R 644 /etc/nagios3/conf.d/",
+    	command => "chmod 644 /etc/nagios3/conf.d/*",
     	notify => Service["nagios3"],
 	}
 
