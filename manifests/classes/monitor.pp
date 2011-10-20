@@ -10,7 +10,14 @@ class nagios3::monitor {
 	}
 
 
-	Nagios_host <<||>> { notify => Service["nagios3"]}
-	Nagios_service <<||>> { notify => Service["nagios3"]}
-	Nagios_hostextinfo <<||>> { notify => Service["nagios3"]}
+	Nagios_host <<||>> { notify => Exec["chown fast"]}
+	Nagios_service <<||>> { notify => Exec["chown fast"]}
+	Nagios_hostextinfo <<||>> { notify => Exec["chown fast"]}
+	
+	exec { "chown fast":
+    	command => "chmod -R 644 /etc/nagios3/conf.d/",
+    	notify => Service["nagios3"],
+	}
+
+
 }

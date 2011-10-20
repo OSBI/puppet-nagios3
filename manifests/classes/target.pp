@@ -17,10 +17,7 @@ if $ec2_public_ipv4 != "" {
 	}
 }
 	
-	file { "/etc/nagios3/conf.d/${fqdn}_host.cfg" :
-		mode => 644,
-		require => Nagios_host["$fqdn"],
-	}
+	
 	
 	@@nagios_hostextinfo { $fqdn:
          ensure => present,
