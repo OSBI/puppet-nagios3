@@ -49,7 +49,7 @@ if $ec2_public_ipv4 != "" {
          target => "/etc/nagios3/nagios_service.cfg",
          notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
-		use					=> "generic-service",
+		
       }
       
       @@nagios_service { "check_load_${hostname}":
@@ -58,7 +58,7 @@ if $ec2_public_ipv4 != "" {
          target => "/etc/nagios3/nagios_service.cfg",
          notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
-		use					=> "generic-service",
+		
       }
       
       @@nagios_service { "check_zombie_procs_${hostname}":
@@ -67,7 +67,6 @@ if $ec2_public_ipv4 != "" {
          target => "/etc/nagios3/nagios_service.cfg",
          notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
-		use					=> "generic-service",
-      }		
+		      }		
 		
 }
