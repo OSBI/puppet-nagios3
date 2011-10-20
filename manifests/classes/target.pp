@@ -17,6 +17,11 @@ if $ec2_public_ipv4 != "" {
 	}
 }
 	
+	file { "/etc/nagios3/conf.d/${fqdn}_host.cfg" :
+		mode => 644,
+		require => Nagios_host["$fqdn"],
+	}
+	
 	@@nagios_service { "check_ping_${hostname}":
 		check_command		=> "check_ping!100.0,20%!500.0,60%",
 		use					=> "generic-service",
