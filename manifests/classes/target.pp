@@ -44,7 +44,7 @@ if $ec2_public_ipv4 != "" {
          use => "remote-nrpe-users",
          host_name => "$fqdn",
          notification_period	=> "24x7",
-		target => "/etc/nagios3/conf.d/${fqdn}_users_service.cfg",
+		target => "/etc/nagios3/conf.d/${fqdn}_host.cfg"
 		service_description	=> "${hostname}_check_users",
       }
       
