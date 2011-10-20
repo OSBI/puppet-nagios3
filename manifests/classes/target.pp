@@ -1,5 +1,5 @@
 class nagios3::export::target {
-include aws
+
 	@@nagios_host { "$fqdn":
 		ensure 	=> present,
 		alias	=> $hostname,
