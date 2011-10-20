@@ -33,7 +33,7 @@ if $ec2_public_ipv4 != "" {
 		host_name			=> "$fqdn",
 		notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
-		target => "/etc/nagios3/nagios_service.cfg"
+		target => "/etc/nagios3/conf.d/${fqdn}_ping_service.cfg"
 	}
 
 	#file { "/etc/nagios3/conf.d/${fqdn}_host.cfg" :
@@ -45,14 +45,14 @@ if $ec2_public_ipv4 != "" {
          host_name => "$fqdn",
          target => "/etc/nagios3/nagios_service.cfg",
          notification_period	=> "24x7",
-		service_description	=> "${hostname}_check_ping",
+		target => "/etc/nagios3/conf.d/${fqdn}_users_service.cfg"
 		
       }
       
       @@nagios_service { "check_load_${hostname}":
          use => "remote-nrpe-load",
          host_name => "$fqdn",
-         target => "/etc/nagios3/nagios_service.cfg",
+         target => "/etc/nagios3/conf.d/${fqdn}_load_service.cfg",
          notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
 		
@@ -61,7 +61,7 @@ if $ec2_public_ipv4 != "" {
       @@nagios_service { "check_zombie_procs_${hostname}":
          use => "remote-nrpe-zombie-procs",
          host_name => "$fqdn",
-         target => "/etc/nagios3/nagios_service.cfg",
+         target => "/etc/nagios3/conf.d/${fqdn}_zombie_service.cfg",
          notification_period	=> "24x7",
 		service_description	=> "${hostname}_check_ping",
 		      }		
