@@ -1,9 +1,9 @@
 class nagios3::export::target {
-
+include aws
 	@@nagios_host { "$fqdn":
 		ensure 	=> present,
 		alias	=> $hostname,
-		address => $ipaddress,
+		address => $ec2_public_ipv4,
 		use		=> "generic-host",
 		target => "/etc/nagios3/conf.d/${fqdn}_host.cfg"
 	}
