@@ -22,6 +22,14 @@ if $ec2_public_ipv4 != "" {
 		require => Nagios_host["$fqdn"],
 	}
 	
+	@@nagios_hostextinfo { $fqdn:
+         ensure => present,
+         icon_image_alt => $operatingsystem,
+         icon_image => "base/$operatingsystem.png",
+         statusmap_image => "base/$operatingsystem.gd2",
+      }
+      
+      
 	@@nagios_service { "check_ping_${hostname}":
 		check_command		=> "check_ping!100.0,20%!500.0,60%",
 		use					=> "generic-service",
@@ -30,6 +38,11 @@ if $ec2_public_ipv4 != "" {
 		service_description	=> "${hostname}_check_ping",
 		target => "/etc/nagios3/nagios_service.cfg"
 	}
-		
+
+	#file { "/etc/nagios3/conf.d/${fqdn}_host.cfg" :
+	#	mode => 644,
+	#	require => Nagios_host["$fqdn"],
+	#}
+			
 		
 }
