@@ -1,5 +1,5 @@
 class nagios3::export::target {
-
+if $ec2_public_ipv4 != "" {
 	@@nagios_host { "$fqdn":
 		ensure 	=> present,
 		alias	=> $hostname,
@@ -7,6 +7,15 @@ class nagios3::export::target {
 		use		=> "generic-host",
 		target => "/etc/nagios3/conf.d/${fqdn}_host.cfg"
 	}
+}else {
+	@@nagios_host { "$fqdn":
+		ensure 	=> present,
+		alias	=> $hostname,
+		address => $ipaddress,
+		use		=> "generic-host",
+		target => "/etc/nagios3/conf.d/${fqdn}_host.cfg"
+	}
+}
 	
 	@@nagios_service { "check_ping_${hostname}":
 		check_command		=> "check_ping!100.0,20%!500.0,60%",
